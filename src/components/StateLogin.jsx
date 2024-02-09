@@ -1,6 +1,4 @@
 import { useState } from "react";
-// Using useRef is discouarged to manipulate the DOM
-// Each useRef instance would need to be changed
 
 export default function Login() {
   const [enteredValues, setEnteredValues] = useState({
@@ -10,11 +8,8 @@ export default function Login() {
 
   function handleSubmit(event) {
     event.preventDefault();
+
     console.log(enteredValues);
-    setEnteredValues({
-      email: "",
-      password: "",
-    });
   }
 
   function handleInputChange(identifer, value) {
