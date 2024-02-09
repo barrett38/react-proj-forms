@@ -1,14 +1,11 @@
 import { useRef } from "react";
+// using Refs logic only gives data on submit
 
 export default function Login() {
   const email = useRef();
   const password = useRef();
   // const [enteredEmail, setEnteredEmail] = useState("");
   // const [enteredPassword, setEnteredPassword] = useState("");
-  const [enteredValues, setEnteredValues] = useState({
-    email: "",
-    password: "",
-  });
 
   function handleSubmit(event) {
     event.preventDefault();

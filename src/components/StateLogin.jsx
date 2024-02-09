@@ -1,10 +1,14 @@
 import { useState } from "react";
+// using Stateful logic it gives us listen on every change
 
 export default function Login() {
   const [enteredValues, setEnteredValues] = useState({
     email: "",
     password: "",
   });
+
+  const emailIsInvalid =
+    enteredValues.email !== "" && !enteredValues.email.includes("@");
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -26,20 +30,33 @@ export default function Login() {
       <div className="control-row">
         <div className="control no-margin">
           <label htmlFor="email">Email</label>
-          <input id="email" type="email" name="email" ref={email} />
+          <input
+            id="email"
+            type="email"
+            name="email"
+            onChange={(event) => handleInputChange("email", event.target.value)}
+          />
+          <div className="control-error">
+            {emailIsInvalid && <p>Please enter valid email address.</p>}
+          </div>
         </div>
 
         <div className="control no-margin">
           <label htmlFor="password">Password</label>
-          <input id="password" type="password" name="password" ref={password} />
+          <input
+            id="password"
+            type="password"
+            name="password"
+            onChange={(event) =>
+              handleInputChange("password", event.target.value)
+            }
+          />
         </div>
       </div>
 
       <p className="form-actions">
         <button className="button button-flat">Reset</button>
         <button className="button">Login</button>
-        {/* Removed type and onClick */}
-        {/* listener will be above in the Form */}
       </p>
     </form>
   );
