@@ -3,7 +3,11 @@ export default function Signup() {
     event.preventDefault();
 
     const fd = new FormData(event.target);
-    const data = Object.fromEntries(fd.entries());
+    const acquisitionChannel = fd.getAll("acquisition");
+    const data = Object.fromEntries(fd.entries()); // returns object
+    // multi value input fields are lost to this method
+    // see name="acquisition" in the form below
+    data.acquisition = acquisitionChannel;
     console.log(data);
   }
 
