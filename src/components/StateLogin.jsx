@@ -1,5 +1,6 @@
 import { useRef } from "react";
-// 252 - 3:15
+// Using useRef is discouarged to manipulate the DOM
+// Each useRef instance would need to be changed
 
 export default function Login() {
   const email = useRef();
