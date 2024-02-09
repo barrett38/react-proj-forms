@@ -1,18 +1,27 @@
-import { useRef } from "react";
+import { useState } from "react";
 // Using useRef is discouarged to manipulate the DOM
 // Each useRef instance would need to be changed
 
 export default function Login() {
-  const email = useRef();
-  const password = useRef();
+  const [enteredValues, setEnteredValues] = useState({
+    email: "",
+    password: "",
+  });
 
   function handleSubmit(event) {
     event.preventDefault();
+    console.log(enteredValues);
+    setEnteredValues({
+      email: "",
+      password: "",
+    });
+  }
 
-    const enteredEmail = email.current.value;
-    const enteredPassword = password.current.value;
-
-    console.log(enteredEmail, enteredPassword);
+  function handleInputChange(identifer, value) {
+    setEnteredValues((prevValues) => ({
+      ...prevValues,
+      [identifer]: value,
+    }));
   }
 
   return (
