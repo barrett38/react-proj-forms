@@ -25,6 +25,10 @@ export default function Login() {
       ...prevValues,
       [identifer]: value,
     }));
+    setDidEdit((prevEdiit) => ({
+      ...prevEdiit,
+      [identifer]: false,
+    }));
   }
 
   function handleInputBlur(identifier) {
